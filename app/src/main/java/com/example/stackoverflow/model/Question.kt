@@ -1,17 +1,9 @@
 package com.example.stackoverflow.model
 
-
-import com.squareup.moshi.Json
-import com.squareup.moshi.JsonClass
-
-@JsonClass(generateAdapter = true)
 data class Question(
-    @Json(name = "has_more")
-    val hasMore: Boolean,
-    @Json(name = "items")
-    val items: List<Item>,
-    @Json(name = "quota_max")
-    val quotaMax: Int,
-    @Json(name = "quota_remaining")
-    val quotaRemaining: Int
+    val view_count: Int,
+    val answer_count: Int,
+    val title: String,
+    val owner: Owner,
+    val creation_date: Long
 )

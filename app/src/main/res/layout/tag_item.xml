@@ -6,7 +6,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginEnd="5dp"
-    app:cardBackgroundColor="@color/light_gray"
+    app:cardBackgroundColor="@color/black_low"
     app:cardCornerRadius="10dp">
 
     <TextView
@@ -16,7 +16,7 @@
         android:layout_gravity="center_vertical"
         android:paddingHorizontal="6dp"
         android:paddingVertical="3dp"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="10sp"
         tools:text="kotlin" />
 

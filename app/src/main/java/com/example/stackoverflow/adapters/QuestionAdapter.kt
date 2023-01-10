@@ -14,7 +14,8 @@ import com.example.stackoverflow.utils.getTime
 
 
 class QuestionAdapter(
-    private val clickListener: OnClickListener, private val context: Context) : ListAdapter<Question, QuestionAdapter.ItemViewHolder>(DiffUtilCallBack()) {
+    private val clickListener: OnClickListener, private val context: Context
+) : ListAdapter<Question, QuestionAdapter.ItemViewHolder>(DiffUtilCallBack()) {
 
     inner class ItemViewHolder(private val binding: QuestionItemBinding) :
         RecyclerView.ViewHolder(binding.root) {

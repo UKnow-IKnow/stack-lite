@@ -1,4 +1,4 @@
-package com.example.stackoverflow
+package com.example.stackoverflow.ui
 
 import android.content.Context
 import android.os.Bundle
@@ -14,6 +14,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.example.stackoverflow.QuestionViewModel
+import com.example.stackoverflow.R
 import com.example.stackoverflow.adapters.QuestionAdapter
 import com.example.stackoverflow.model.Question
 import com.example.stackoverflow.utils.Resource
@@ -106,7 +108,7 @@ class QuestionFragment : Fragment() {
                 } else {
                     clearQuery.isGone = true
                     searchIcon.isVisible = true
-                    search_key_text.text = "Trending Questions"
+                    search_key_text.text = "Questions"
                     questions_rv.isGone = false
                     questions_searched_rv.isGone = true
                 }

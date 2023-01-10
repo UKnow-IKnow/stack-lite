@@ -10,4 +10,6 @@
 
     <color name="light_gray">#c0c0c0</color>
     <color name="gray">#808080</color>
+    <color name="black_low">#2E2E2E</color>
+    <color name="black_Mid">#171717</color>
 </resources>

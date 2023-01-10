@@ -1,4 +1,4 @@
-package com.example.stackoverflow
+package com.example.stackoverflow.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.isGone
 import androidx.fragment.app.activityViewModels
+import com.example.stackoverflow.QuestionViewModel
 import com.example.stackoverflow.adapters.QuestionAdapter
 import com.example.stackoverflow.databinding.FragmentSearchWithTagBinding
 import com.example.stackoverflow.model.Question

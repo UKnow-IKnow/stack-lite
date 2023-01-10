@@ -7,16 +7,16 @@
 
     <fragment
         android:id="@+id/questionFragment"
-        android:name="com.example.stackoverflow.QuestionFragment"
+        android:name="com.example.stackoverflow.ui.QuestionFragment"
         android:label="fragment_question"
-        tools:layout="@layout/fragment_question" >
+        tools:layout="@layout/fragment_question">
         <action
             android:id="@+id/action_questionFragment_to_searchWithTagFragment"
             app:destination="@id/searchWithTagFragment" />
     </fragment>
     <fragment
         android:id="@+id/searchWithTagFragment"
-        android:name="com.example.stackoverflow.SearchWithTagFragment"
+        android:name="com.example.stackoverflow.ui.SearchWithTagFragment"
         android:label="fragment_search_with_tag"
         tools:layout="@layout/fragment_search_with_tag" />
 </navigation>

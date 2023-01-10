@@ -10,7 +10,8 @@ import com.example.stackoverflow.databinding.TagItemBinding
 
 class TagAdapter() : ListAdapter<String, TagAdapter.ItemViewHolder>(DiffUtilCallback()) {
 
-    inner class ItemViewHolder(private val binding: TagItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ItemViewHolder(private val binding: TagItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
         fun bind(tag: String) = binding.apply {
             tagItemText.text = tag

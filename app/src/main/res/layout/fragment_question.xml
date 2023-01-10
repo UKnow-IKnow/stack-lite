@@ -3,18 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/white"
+    android:layout_height="match_parent"
+    android:background="@color/black_low"
     android:focusable="true"
     android:focusableInTouchMode="true"
     android:orientation="vertical"
-    android:layout_height="match_parent"
-    tools:context=".QuestionFragment">
+    tools:context=".ui.QuestionFragment">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/searchToolBar"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
-        android:background="@color/white"
+        android:background="@color/black_low"
         android:paddingTop="8dp">
 
         <RelativeLayout
@@ -26,10 +26,11 @@
                 android:id="@+id/searchET"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_alignParentStart="true"
                 android:layout_alignEnd="@+id/filterIcon"
+                android:layout_alignParentStart="true"
                 android:layout_marginEnd="0dp"
                 android:hint="Search"
+                android:textColorHint="@color/gray"
                 android:textSize="16sp"
                 tools:ignore="Suspicious0dp" />
 
@@ -101,6 +102,7 @@
         android:layout_marginHorizontal="10dp"
         android:layout_marginTop="12dp"
         android:text="Questions"
+        android:textColor="@color/white"
         android:textSize="22sp"
         android:textStyle="bold" />
 
@@ -111,30 +113,30 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="120dp"
-        android:visibility="gone"/>
+        android:visibility="gone" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/questions_rv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="8dp"
         android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="8dp"
         android:visibility="gone"
-        tools:itemCount="6"
-        tools:visibility="visible"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/question_item"/>
+        tools:itemCount="6"
+        tools:listitem="@layout/question_item"
+        tools:visibility="visible" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/questions_searched_rv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="8dp"
         android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="8dp"
         android:visibility="gone"
-        tools:itemCount="5"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/question_item"/>
+        tools:itemCount="5"
+        tools:listitem="@layout/question_item" />
 
     <LinearLayout
         android:id="@+id/null_search"
@@ -148,7 +150,7 @@
         <ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:src="@drawable/ic_error"/>
+            android:src="@drawable/ic_error" />
 
         <TextView
             android:layout_width="match_parent"
@@ -171,7 +173,7 @@
         <ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:src="@drawable/ic_error"/>
+            android:src="@drawable/ic_error" />
 
         <TextView
             android:layout_width="match_parent"

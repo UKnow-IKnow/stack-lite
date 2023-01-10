@@ -1,10 +1,7 @@
 package com.example.stackoverflow.api
 
-import com.example.stackoverflow.model.Question
 import com.example.stackoverflow.model.QuestionResponse
 import com.example.stackoverflow.utils.Constants
-import com.example.stackoverflow.utils.Constants.Companion.API_KEY
-import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query

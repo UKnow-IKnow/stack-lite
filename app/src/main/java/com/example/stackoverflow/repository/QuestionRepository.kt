@@ -1,6 +1,5 @@
 package com.example.stackoverflow.repository
 
-import com.example.stackoverflow.api.RetrofitInstance
 import com.example.stackoverflow.api.StackExchangeApi
 import javax.inject.Inject
 

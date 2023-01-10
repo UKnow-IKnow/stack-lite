@@ -1,11 +1,9 @@
 package com.example.stackoverflow
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.stackoverflow.model.Question
 import com.example.stackoverflow.model.QuestionResponse
 import com.example.stackoverflow.repository.QuestionRepository
 import com.example.stackoverflow.utils.Resource
@@ -14,11 +12,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import retrofit2.Response
-import java.lang.Exception
 import javax.inject.Inject
 
 @HiltViewModel
-class QuestionViewModel @Inject internal constructor(private val repository: QuestionRepository): ViewModel() {
+class QuestionViewModel @Inject internal constructor(private val repository: QuestionRepository) :
+    ViewModel() {
 
     private val _questions = MutableLiveData<Resource<QuestionResponse>>()
     val questions: LiveData<Resource<QuestionResponse>> get() = _questions
@@ -43,6 +41,7 @@ class QuestionViewModel @Inject internal constructor(private val repository: Que
 
 
     }
+
     private suspend fun safeHandleResponse(response: Response<QuestionResponse>): Resource<QuestionResponse>? {
         return withContext(Dispatchers.IO) {
             try {

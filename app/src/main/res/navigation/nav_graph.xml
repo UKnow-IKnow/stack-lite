@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/questionFragment">
+
+    <fragment
+        android:id="@+id/questionFragment"
+        android:name="com.example.stackoverflow.QuestionFragment"
+        android:label="fragment_question"
+        tools:layout="@layout/fragment_question" >
+        <action
+            android:id="@+id/action_questionFragment_to_searchWithTagFragment"
+            app:destination="@id/searchWithTagFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchWithTagFragment"
+        android:name="com.example.stackoverflow.SearchWithTagFragment"
+        android:label="fragment_search_with_tag"
+        tools:layout="@layout/fragment_search_with_tag" />
+</navigation>

@@ -1,26 +1,41 @@
 package com.example.stackoverflow.adapters
 
+
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.stackoverflow.R
+import com.example.stackoverflow.databinding.QuestionItemBinding
 import com.example.stackoverflow.model.Question
 import com.example.stackoverflow.utils.getTime
-import kotlinx.android.synthetic.main.question_item.view.*
+
 
 class QuestionAdapter(
-    private val clickListener: OnClickListener,
-    private val context: Context
-): RecyclerView.Adapter<QuestionAdapter.QuestionViewHolder>() {
+    private val clickListener: OnClickListener, private val context: Context) : ListAdapter<Question, QuestionAdapter.ItemViewHolder>(DiffUtilCallBack()) {
 
-    inner class QuestionViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
+    inner class ItemViewHolder(private val binding: QuestionItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(questionItem: Question) {
+            binding.apply {
+                questionItemText.text = questionItem.title
+                Glide.with(context).load(questionItem.owner.profile_image).into(questionItemAuthor)
+                questionItemAuthorText.text = questionItem.owner.display_name
+                questionItemTimestampText.getTime(questionItem.last_edit_date.toLong())
+                val tagAdapter = TagAdapter()
+                questionItemTagsRv.setHasFixedSize(true)
+                questionItemTagsRv.adapter = tagAdapter
+                tagAdapter.submitList(questionItem.tags)
+                root.setOnClickListener {
+                    clickListener.openQuestion(questionItem)
+                }
+            }
+        }
+    }
 
-    private val diffUtilCallback = object : DiffUtil.ItemCallback<Question>(){
+    class DiffUtilCallBack : DiffUtil.ItemCallback<Question>() {
         override fun areItemsTheSame(oldItem: Question, newItem: Question): Boolean {
             return oldItem == newItem
         }
@@ -28,35 +43,21 @@ class QuestionAdapter(
         override fun areContentsTheSame(oldItem: Question, newItem: Question): Boolean {
             return oldItem == newItem
         }
-    }
 
-    val differ = AsyncListDiffer(this, diffUtilCallback)
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): QuestionViewHolder {
-        return QuestionViewHolder(
-            LayoutInflater.from(parent.context).inflate(
-                R.layout.question_item,
-                parent,
-                false
-            )
-        )
-    }
-
-    override fun onBindViewHolder(holder: QuestionViewHolder, position: Int) {
-        val question = differ.currentList[position]
-        holder.itemView.apply {
-            question_item_text.text = question?.title
-            Glide.with(this).load(question.owner.profile_image).into(question_item_author)
-            question_item_author_text.text = question.owner.display_name
-            question_item_timestamp_text.getTime(question.last_edit_date.toLong())
-        }
-    }
-
-    override fun getItemCount(): Int {
-        return differ.currentList.size
     }
 
     interface OnClickListener {
         fun openQuestion(questionItem: Question) {}
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
+        return ItemViewHolder(
+            QuestionItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        )
+    }
+
+    override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
+        val questionItem = getItem(position)
+        holder.bind(questionItem)
     }
 }

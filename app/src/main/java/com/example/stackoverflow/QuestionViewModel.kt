@@ -31,15 +31,51 @@ class QuestionViewModel @Inject internal constructor(private val repository: Que
         MutableLiveData()
     val taggedQuestions: LiveData<Resource<QuestionResponse>> = _taggedQuestions
 
+    init {
+        getQuestions()
+    }
+
     fun getQuestions() = viewModelScope.launch {
         _questions.postValue(Resource.Loading())
-        Log.d("ViewModel", "getActiveQuestions: Status=${_questions.value}")
+
         val response = repository.getQuestions()
         _questions.postValue(safeHandleResponse(response))
-        Log.d("ViewModel", "getActiveQuestions: Status=${questions.value} + ${response.body()}")
+
 
     }
     private suspend fun safeHandleResponse(response: Response<QuestionResponse>): Resource<QuestionResponse>? {
+        return withContext(Dispatchers.IO) {
+            try {
+                Resource.Success(data = response.body()!!)
+            } catch (e: Exception) {
+                Resource.Error(e.message.toString())
+            }
+        }
+    }
+
+    fun searchQuestions(query: String) = viewModelScope.launch {
+        _searchedQuestions.postValue(Resource.Loading())
+        val response = repository.searchQuestions(query)
+        _searchedQuestions.postValue(safeHandleSearchResponse(response))
+    }
+
+    private suspend fun safeHandleSearchResponse(response: Response<QuestionResponse>): Resource<QuestionResponse>? {
+        return withContext(Dispatchers.IO) {
+            try {
+                Resource.Success(data = response.body()!!)
+            } catch (e: Exception) {
+                Resource.Error(e.message.toString())
+            }
+        }
+    }
+
+    fun searchWithFilter(tags: String) = viewModelScope.launch {
+        _taggedQuestions.postValue(Resource.Loading())
+        val response = repository.searchWithFilter(tags)
+        _taggedQuestions.postValue(safeHandleTaggedResponse(response))
+    }
+
+    private suspend fun safeHandleTaggedResponse(response: Response<QuestionResponse>): Resource<QuestionResponse>? {
         return withContext(Dispatchers.IO) {
             try {
                 Resource.Success(data = response.body()!!)

@@ -78,14 +78,7 @@
         tools:itemCount="4"
         tools:listitem="@layout/tag_item" />
 
-    <View
-        android:layout_width="0dp"
-        android:layout_height="1.5dp"
-        android:layout_marginTop="14dp"
-        android:background="@android:color/darker_gray"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/question_item_tags_rv" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

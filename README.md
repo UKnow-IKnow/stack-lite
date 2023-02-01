@@ -9,6 +9,17 @@
 * Can add tags to your search.
 * Can open the question on Chrome Custom tab.  
 
+## 📷 ScreenShots
+
+<div>
+<img src=https://user-images.githubusercontent.com/92221289/216145182-4cecd22c-817d-44f0-9f2b-09e6e52738e0.jpg width="200" height="400">
+<img src=https://user-images.githubusercontent.com/92221289/216145201-119bcd27-9fa5-4b0c-9602-3bec49c8ac6f.jpg width="200" height="400">
+<img src=https://user-images.githubusercontent.com/92221289/216145234-976a0c6d-6542-41d9-be46-6b416104703d.jpg width="200" height="400">
+<img src=https://user-images.githubusercontent.com/92221289/216145261-28667ff8-9d9e-406c-80ed-2991bae422ae.gif width="200" height="400">
+
+<div>
+
+
 ## Tech Stack used 👨‍💻 :
 
 - [MVVM](https://developer.android.com/jetpack/guide) - MVVM is one of the architectural patterns which enhances separation of concerns, it allows separating the user interface logic from the business (or the back-end) logic. Its target (with other MVC patterns goal) is to achieve the following principle “Keeping UI code simple and free of app logic in order to make it easier to manage”.

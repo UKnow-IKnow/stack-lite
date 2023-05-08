@@ -13,10 +13,21 @@
         <action
             android:id="@+id/action_questionFragment_to_searchWithTagFragment"
             app:destination="@id/searchWithTagFragment" />
+        <action
+            android:id="@+id/action_questionFragment_to_noInternetActivity"
+            app:destination="@id/noInternetActivity" />
     </fragment>
     <fragment
         android:id="@+id/searchWithTagFragment"
         android:name="com.example.stackoverflow.ui.SearchWithTagFragment"
         android:label="fragment_search_with_tag"
-        tools:layout="@layout/fragment_search_with_tag" />
+        tools:layout="@layout/fragment_search_with_tag" >
+        <action
+            android:id="@+id/action_searchWithTagFragment_to_noInternetActivity"
+            app:destination="@id/noInternetActivity" />
+    </fragment>
+    <activity
+        android:id="@+id/noInternetActivity"
+        android:name="com.example.stackoverflow.broadcast.NoInternetActivity"
+        android:label="NoInternetActivity" />
 </navigation>

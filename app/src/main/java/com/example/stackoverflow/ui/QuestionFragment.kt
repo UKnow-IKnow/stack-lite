@@ -17,6 +17,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.stackoverflow.QuestionViewModel
 import com.example.stackoverflow.R
 import com.example.stackoverflow.adapters.QuestionAdapter
+import com.example.stackoverflow.broadcast.NetworkError
 import com.example.stackoverflow.model.Question
 import com.example.stackoverflow.utils.Resource
 import com.example.stackoverflow.utils.openQuestion
@@ -42,6 +43,16 @@ class QuestionFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        NetworkError(requireContext()).observe(viewLifecycleOwner){
+            if (!it){
+                //No Internet connection
+                findNavController().navigate(R.id.action_questionFragment_to_noInternetActivity)
+                findNavController().navigateUp()
+            }else{
+
+            }
+        }
 
         setUpRecyclerView()
         clearQuery.setOnClickListener {
